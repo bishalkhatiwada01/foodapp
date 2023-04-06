@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:foodapp/widgets/appbar.dart';
+import 'package:foodapp/widgets/burger_card.dart';
+import 'package:foodapp/widgets/burger_card1.dart';
 import 'package:foodapp/widgets/drawer.dart';
+import 'package:foodapp/widgets/horizantal_scroll_view.dart';
+import 'package:foodapp/widgets/search_bar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -10,43 +15,42 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(100.0),
-        child: AppBar(
-          // leading: const Icon(Icons.menu, color: Colors.black),
-          leading: Column(
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconButton(
-                icon: Icon(
-                  Icons.menu,
-                  color: Colors.black,
+              const App_Bar(),
+              const Searchbar(),
+              const HorizantalScroll(),
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      "Popular",
+                      style: TextStyle(
+                        fontSize: 23,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "View all >",
+                          style: TextStyle(color: Colors.red, fontSize: 16),
+                        )),
+                  ],
                 ),
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (Context) => const DrawerWidget()));
-                },
               ),
+              Burger_card1()
             ],
           ),
-          backgroundColor: Colors.white,
-
-          title: const Text(
-            "Chicago llL",
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-          ),
-          actions: [
-            Container(
-              width: 69,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.red,
-                  // color: Colors.red,
-                  border: Border.all(color: Colors.red)),
-              child: const Icon(Icons.shopping_bag_outlined, size: 30),
-            ),
-          ],
         ),
-      ),
-    );
+        backgroundColor: const Color.fromRGBO(224, 224, 224, 1)
+// backgroundColor: Colors.white,
+
+        );
   }
 }
