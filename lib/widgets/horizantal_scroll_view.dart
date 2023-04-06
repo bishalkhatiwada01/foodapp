@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:foodapp/cards/momo.dart';
-import 'package:foodapp/widgets/burger_card.dart';
 
 import '../cards/burger.dart';
 import '../cards/cake.dart';
@@ -13,24 +13,19 @@ class HorizantalScroll extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
+    return Padding(
       padding: const EdgeInsets.all(8.0),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: const [
-            BurgerCard(),
-            PizzaCard(),
-            CakeCard(),
-            MomoCard(),
-
-          ]
-        ),
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: const [
+              BurgerCard(),
+              PizzaCard(),
+              CakeCard(),
+              MomoCard(),
+            ]),
       ),
     );
   }
 }
-
-
-

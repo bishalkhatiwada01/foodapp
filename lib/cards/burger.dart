@@ -8,15 +8,11 @@ class BurgerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
-      padding: const EdgeInsets.all(15.0),
-      child: Container(
-        width: 120.0,
-        height: 200.0,
-        decoration: BoxDecoration(
-          color: Colors.red,
-          borderRadius: BorderRadius.circular(20.0),
-        ),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(25),
+      child: Card(
+        color: Colors.red,
+        elevation: 5,
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
@@ -27,12 +23,15 @@ class BurgerCard extends StatelessWidget {
                 color: Colors.white,
                 child: Image.asset("assets/img.png"),
               ),
-
-              const SizedBox(height: 15,),
-              const Text("Burger",style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
+              const SizedBox(
+                height: 15,
               ),
+              const Text(
+                "Burger",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                ),
               ),
               const SizedBox(height: 10.0),
               Container(
@@ -43,8 +42,9 @@ class BurgerCard extends StatelessWidget {
                   color: Colors.white,
                 ),
                 child: IconButton(
-                  onPressed: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>BurgerPage()));
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => BurgerPage()));
                   },
                   icon: const Icon(
                     Icons.arrow_forward_ios,
@@ -52,17 +52,10 @@ class BurgerCard extends StatelessWidget {
                   ),
                 ),
               ),
-
-
-
             ],
           ),
         ),
       ),
     );
-
   }
 }
-
-
-

@@ -9,11 +9,13 @@ class BurgerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: IconButton(onPressed: (){
-          Navigator.of(context).push(MaterialPageRoute(builder: (Context)=>HomePage()));
-        }, icon: Icon(Icons.arrow_back_ios)),
+        title: IconButton(
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (Context) => HomePage()));
+            },
+            icon: Icon(Icons.arrow_back_ios)),
       ),
     );
   }
 }
-

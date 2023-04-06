@@ -9,16 +9,16 @@ class MyDrawer extends StatelessWidget {
         color: Colors.deepPurple, // Set background color of drawer
         child: Column(
           children: <Widget>[
-            Container(
+            SizedBox(
               height: 200, // Set height of the header
               child: DrawerHeader(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.deepPurple, // Set background color of header
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
+                  children: const <Widget>[
                     Text(
                       'Welcome', // Title text
                       style: TextStyle(
@@ -28,7 +28,7 @@ class MyDrawer extends StatelessWidget {
                     ),
                     SizedBox(height: 10), // Add some spacing
                     Text(
-                      'John Doe', // Subtitle text
+                      'Bishal', // Subtitle text
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
@@ -39,12 +39,11 @@ class MyDrawer extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.home, // Icon for the item
                 color: Colors.white,
-
               ),
-              title: Text(
+              title: const Text(
                 'Home', // Title text for the item
                 style: TextStyle(
                   color: Colors.white,
@@ -52,18 +51,18 @@ class MyDrawer extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>HomePage()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const HomePage()));
 
                 // Handle onTap event
               },
             ),
             ListTile(
-              leading: Icon(
+              leading: const Icon(
                 Icons.settings, // Icon for the item
                 color: Colors.white,
-
               ),
-              title: Text(
+              title: const Text(
                 'Settings', // Title text for the item
                 style: TextStyle(
                   color: Colors.white,
