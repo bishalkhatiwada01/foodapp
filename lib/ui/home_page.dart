@@ -107,9 +107,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:foodapp/widgets/bottom_navigation_bar.dart';
-import 'package:foodapp/widgets/burger_card1.dart';
+import 'package:foodapp/cards/burger_card1.dart';
 import 'package:foodapp/widgets/drawer.dart';
-import 'package:foodapp/widgets/horizantal_scroll_view.dart';
+import 'package:foodapp/cards/horizantal_scroll_view.dart';
 import 'package:foodapp/widgets/search_bar.dart';
 
 class HomePage extends StatefulWidget {

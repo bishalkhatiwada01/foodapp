@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 import 'package:foodapp/cards/momo.dart';
 
-import '../cards/burger.dart';
-import '../cards/cake.dart';
-import '../cards/pizza.dart';
+import 'burger.dart';
+import 'cake.dart';
+import 'pizza.dart';
 import '../ui/burger_page.dart';
 
 class HorizantalScroll extends StatelessWidget {
