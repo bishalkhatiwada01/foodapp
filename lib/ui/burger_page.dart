@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:foodapp/ui/home_page.dart';
+import 'package:get/get.dart';
+import 'package:sizer/sizer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BurgerPage extends StatelessWidget {
   const BurgerPage({super.key});
@@ -7,322 +10,245 @@ class BurgerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        automaticallyImplyLeading: false,
-        title: Row(
-          children: [
-            Positioned(
-              bottom: 315,
-              left: 50,
-              child: Container(
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
-                      blurRadius: 10.0,
-                      spreadRadius: 2.0,
-                      offset: const Offset(
-                        0.0,
-                        4.0,
-                      ),
-                    ),
-                  ],
-                ),
-                child: Card(
-                  child: SizedBox(
-                    width: 50,
-                    height: 50,
-                    child: IconButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const HomePage()));
-                      },
-                      icon: const Icon(
-                        Icons.arrow_back_ios,
-                        color: Colors.black,
-                        size: 30,
-                      ),
-                    ),
-                  ),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(65),
+        child: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          leading: Card(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            elevation: 5,
+            child: IconButton(
+              padding: const EdgeInsets.only(left: 5),
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => HomePage()));
+              },
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color: Colors.black,
+              ),
+            ),
+          ),
+          actions: [
+            Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              elevation: 5,
+              child: IconButton(
+                iconSize: 30,
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.favorite_border,
+                  color: Colors.red,
                 ),
               ),
             ),
           ],
         ),
-        actions: [
-          Card(
-            child: Container(
-              width: 50,
-              height: 50,
-              child: IconButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const HomePage()));
-                },
-                icon: const Center(
-                  child: Icon(
-                    Icons.favorite_border_outlined,
-                    color: Colors.red,
-                    size: 30,
-                  ),
-                ),
+      ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(left: 80, right: 50),
+              child: Text(
+                "Chipotley Cheesy Chicken",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                textAlign: TextAlign.center,
               ),
             ),
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          Stack(
-            children: [
-              // circle container
-              Container(
-                width: 500,
-                height: 550,
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.3),
-                      blurRadius: 10.0,
-                      spreadRadius: 2.0,
-                      offset: const Offset(
-                        0.0,
-                        4.0,
-                      ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 20, right: 20),
+              child: Text(
+                "A signature flame-grilled chicken patty topped with smoked beef",
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.grey),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            SizedBox(
+              height: 450,
+              child: Stack(
+                children: [
+                  const Card(
+                    elevation: 3,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(250),
+                          bottomRight: Radius.circular(250)),
                     ),
-                  ],
-                  shape: BoxShape.circle,
-                  color: Colors.white,
-                ),
-                child: ClipPath(
-                  clipper: HalfCircleClipper(),
-                  child: Container(
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              // Image  of burger
-              Positioned(
-                top: 190,
-                left: 100,
-                child: Image.asset(
-                  "assets/burger1.png",
-                  width: 230,
-                ),
-              ),
-              // Letter S
-              Positioned(
-                bottom: 60,
-                left: 50,
-                child: Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 10.0,
-                        spreadRadius: 2.0,
-                        offset: const Offset(
-                          0.0,
-                          4.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                  child: Card(
-                    elevation: 5.0,
-                    child: Container(
-                      width: 50,
-                      height: 50,
-                      child: const Center(
-                          child: Text(
-                        "S",
-                        style: TextStyle(
-                            fontSize: 28, fontWeight: FontWeight.bold),
-                      )),
-                    ),
-                  ),
-                ),
-              ),
-              // Letter L
-              Positioned(
-                bottom: 60,
-                right: 50,
-                child: Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 10.0,
-                        spreadRadius: 2.0,
-                        offset: const Offset(
-                          0.0,
-                          4.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                  child: Card(
-                    elevation: 5.0,
-                    child: Container(
-                      width: 50,
-                      height: 50,
-                      child: const Center(
-                          child: Text(
-                        "L",
-                        style: TextStyle(
-                            fontSize: 28, fontWeight: FontWeight.bold),
-                      )),
-                    ),
-                  ),
-                ),
-              ),
-              // Letter M
-              Positioned(
-                bottom: 25,
-                left: 185,
-                child: Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 10.0,
-                        spreadRadius: 2.0,
-                        offset: const Offset(
-                          0.0,
-                          4.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                  child: const Card(
-                    elevation: 5.0,
                     child: SizedBox(
-                      width: 50,
-                      height: 50,
-                      child: Center(
-                          child: Text(
-                        "M",
-                        style: TextStyle(
-                            fontSize: 28, fontWeight: FontWeight.bold),
-                      )),
+                      height: 400,
+                      width: double.infinity,
                     ),
                   ),
-                ),
+                  Positioned(
+                    left: 115,
+                    top: 100,
+                    child: SizedBox(
+                      height: 200,
+                      width: 200,
+                      child: Image.asset(
+                        "assets/burger1.png",
+                        width: 100,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 320,
+                    left: 40,
+                    child: InkWell(
+                      onTap: () {},
+                      child: _cardButton(sizeName: 'S'),
+                    ),
+                  ),
+                  Positioned(
+                    top: 320,
+                    right: 40,
+                    child: InkWell(
+                      onTap: () {},
+                      child: _cardButton(sizeName: 'L'),
+                    ),
+                  ),
+                  Positioned(
+                    top: 380,
+                    left: 180,
+                    child: InkWell(
+                      onTap: () {},
+                      child: _cardButton(sizeName: 'M'),
+                    ),
+                  ),
+                ],
               ),
-
-              const Positioned(
-                top: 30,
-                left: 90,
-                child: Text(
-                  "Chipotle Cheesy Chicken",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+            ),
+            const SizedBox(height: 70),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      shape: const CircleBorder(),
+                      padding: const EdgeInsets.all(1)),
+                  child: const Icon(
+                    Icons.add,
+                    color: Colors.black,
                   ),
                 ),
-              ),
-
-              const Positioned(
-                top: 70,
-                left: 25,
-                child: Text(
-                  "A Signature flame-grilled chicken patty topped",
-                  style: TextStyle(fontSize: 17),
-                  maxLines: 2,
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              const Positioned(
-                top: 90,
-                left: 135,
-                child: Text(
-                  " with smokeed beef",
-                  style: TextStyle(fontSize: 17),
-                ),
-              )
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                height: 40,
-                width: 40,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.red,
-                ),
-                child: TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "+",
-                      style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.black,
-                      ),
-                    )),
-              ),
-              const Padding(
-                padding: EdgeInsets.all(30.0),
-                child: Text(
-                  "4",
+                const SizedBox(width: 10),
+                const Text(
+                  "1234",
                   style: TextStyle(fontSize: 20),
                 ),
-              ),
-              Container(
-                height: 40,
-                width: 40,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.red,
-                ),
-                child: const Center(
-                    child: Text(
-                  "-",
-                  style: TextStyle(fontSize: 35),
-                )),
-              ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 90, right: 300),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Text(
-                  "Price",
-                  style: TextStyle(fontSize: 19, color: Colors.black45),
-                ),
-                Text(
-                  "Rs.140",
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      shape: const CircleBorder(),
+                      padding: const EdgeInsets.all(1)),
+                  child: const Icon(
+                    Icons.remove,
+                    color: Colors.black,
+                  ),
                 ),
               ],
             ),
-          ),
-        ],
+            const SizedBox(
+              height: 70,
+            ),
+            SizedBox(
+              height: 50,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: const [
+                      Text(
+                        "Price",
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.grey,
+                        ),
+                      ),
+                      Text(
+                        'Rs. 140',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
+                    ],
+                  ),
+                  TextButton(
+                      onPressed: () {},
+                      style: TextButton.styleFrom(
+                        backgroundColor: const Color(0xffD40909),
+                        minimumSize: const Size(110, 50),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10),
+                            bottomLeft: Radius.circular(10),
+                          ),
+                        ),
+                      ),
+                      child: Row(
+                        children: const [
+                          Icon(
+                            Icons.shopping_bag_outlined,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            'Go to Cart',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      )),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
 }
 
-class HalfCircleClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    final path = Path();
-    path.lineTo(0, size.height / 2);
-    path.arcToPoint(
-      Offset(size.width, size.height / 2),
-      radius: Radius.circular(size.width / 2),
-      clockwise: false,
-    );
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
-  }
+class _cardButton extends StatelessWidget {
+  final String sizeName;
+
+  _cardButton({required this.sizeName});
 
   @override
-  bool shouldReclip(HalfCircleClipper oldClipper) => false;
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      elevation: 6,
+      child: TextButton(
+        style: TextButton.styleFrom(minimumSize: const Size(20, 20)),
+        onPressed: () {},
+        child: Text(
+          sizeName,
+          style: const TextStyle(
+            fontSize: 20,
+            color: Colors.black,
+          ),
+        ),
+      ),
+    );
+  }
 }
