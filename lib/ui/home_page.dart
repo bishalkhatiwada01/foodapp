@@ -1,11 +1,16 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:foodapp/horizantal%20scroll/burger.dart';
+
+import 'package:sizer/sizer.dart';
 
 import 'package:foodapp/widgets/bottom_navigation_bar.dart';
-import 'package:foodapp/cards/burger_card1.dart';
+
 import 'package:foodapp/widgets/drawer.dart';
-import 'package:foodapp/cards/horizantal_scroll_view.dart';
-import 'package:foodapp/widgets/search_bar.dart';
+import 'package:foodapp/horizantal%20scroll/horizantal_scroll_view.dart';
+
+import '../widgets/burger_card1.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,6 +21,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final Color mainColor = const Color(0xffD40909);
+  final searchController = TextEditingController();
 
   int _selectedIndex = 0;
 
@@ -36,9 +42,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        shadowColor: Colors.grey,
         leading: IconButton(
           icon: const Icon(Icons.menu),
           color: Colors.black,
@@ -47,64 +50,95 @@ class _HomePageState extends State<HomePage> {
                 .push(MaterialPageRoute(builder: (context) => MyDrawer()));
           },
         ),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Icon(
-              Icons.location_on,
-              size: 27,
-              color: Colors.red,
-            ),
-            Text(
-              'Chicago IIL',
-              style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
+        backgroundColor: Colors.white,
+        elevation: 1,
+        shadowColor: Colors.grey,
+        title: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10.w),
+          child: Row(
+            children: [
+              Icon(
+                Icons.location_on,
+                size: 8.w,
+                color: mainColor,
               ),
-            ),
-          ],
+              Text(
+                "Chicago IIL",
+                style: TextStyle(
+                  fontSize: 16.sp,
+                  color: Colors.black,
+                ),
+              ),
+            ],
+          ),
         ),
         actions: [
           Stack(
             children: [
               Container(
-                margin: const EdgeInsets.only(top: 12, right: 13),
+                margin: EdgeInsets.only(top: 1.h, right: 2.w),
                 decoration: BoxDecoration(
-                  shape: BoxShape.circle,
                   color: mainColor,
+                  borderRadius: BorderRadius.circular(40),
                 ),
                 child: IconButton(
                   onPressed: () {},
-                  icon: const Center(
-                    child: Icon(Icons.shopping_bag_outlined),
+                  icon: Center(
+                    child: Icon(
+                      Icons.shopping_bag_outlined,
+                      size: 7.w,
+                    ),
                   ),
                 ),
               ),
               Container(
                 decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20)),
-                margin: const EdgeInsets.only(left: 30, top: 12),
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                margin: EdgeInsets.only(left: 8.w, top: 0.8.h),
                 height: 18,
                 width: 18,
-                child: const Center(
+                child: Center(
                   child: Text(
                     "3",
-                    style: TextStyle(fontSize: 10, color: Colors.red),
+                    style: TextStyle(fontSize: 10.sp, color: Colors.red),
                   ),
                 ),
-              )
+              ),
             ],
-          ),
+          )
         ],
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(50),
+          child: Container(
+            child: TextField(
+              controller: searchController,
+              onTap: () {
+                searchController.clear();
+              },
+              decoration: InputDecoration(
+                  border: InputBorder.none,
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 1.w, vertical: 1.8.h),
+                  hintText: "Search our delicious burger",
+                  hintStyle: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.w500),
+                  prefixIcon: Icon(
+                    CupertinoIcons.search,
+                    size: 7.5.w,
+                  )),
+            ),
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Searchbar(),
             const HorizantalScroll(),
             Padding(
               padding: const EdgeInsets.only(left: 10),
@@ -127,8 +161,8 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            const Burger_card1(),
-            const Burger_card1(),
+            BurgerCard1(),
+            BurgerCard1(),
           ],
         ),
       ),

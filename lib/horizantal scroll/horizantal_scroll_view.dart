@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'package:foodapp/cards/momo.dart';
+import 'package:foodapp/horizantal%20scroll/momo.dart';
 
 import 'burger.dart';
+
 import 'cake.dart';
 import 'pizza.dart';
 import '../ui/burger_page.dart';

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodapp/ui/home_page.dart';
-import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BurgerPage extends StatelessWidget {
   const BurgerPage({super.key});
@@ -10,91 +8,96 @@ class BurgerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(65),
-        child: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          leading: Card(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            elevation: 5,
-            child: IconButton(
-              padding: const EdgeInsets.only(left: 5),
-              onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => HomePage()));
-              },
-              icon: const Icon(
-                Icons.arrow_back_ios,
-                color: Colors.black,
-              ),
-            ),
-          ),
-          actions: [
-            Card(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 1.w),
+          child: AppBar(
+            backgroundColor: Colors.white,
+            elevation: 0,
+            leading: Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
               elevation: 5,
-              child: IconButton(
-                iconSize: 30,
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.favorite_border,
-                  color: Colors.red,
+              child: Container(
+                padding: const EdgeInsets.only(left: 5),
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const HomePage()));
+                  },
+                  icon: const Icon(
+                    Icons.arrow_back_ios,
+                    color: Colors.black,
+                  ),
                 ),
               ),
             ),
-          ],
+            actions: [
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                elevation: 5,
+                child: IconButton(
+                  iconSize: 8.w,
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.favorite_outline,
+                    color: Colors.red,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       body: SafeArea(
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.only(left: 80, right: 50),
+            Padding(
+              padding: EdgeInsets.all(2.w),
               child: Text(
                 "Chipotley Cheesy Chicken",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                style: TextStyle(
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w600,
+                ),
                 textAlign: TextAlign.center,
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Padding(
-              padding: EdgeInsets.only(left: 20, right: 20),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 2.w, vertical: 1.w),
               child: Text(
                 "A signature flame-grilled chicken patty topped with smoked beef",
                 style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 13.sp,
                     fontWeight: FontWeight.w500,
                     color: Colors.grey),
                 textAlign: TextAlign.center,
               ),
             ),
             SizedBox(
-              height: 450,
+              height: 50.h,
               child: Stack(
                 children: [
-                  const Card(
-                    elevation: 3,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(250),
-                          bottomRight: Radius.circular(250)),
-                    ),
+                  Card(
+                    elevation: 2,
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(250),
+                            bottomRight: Radius.circular(250))),
                     child: SizedBox(
-                      height: 400,
+                      height: 45.h,
                       width: double.infinity,
                     ),
                   ),
                   Positioned(
-                    left: 115,
-                    top: 100,
+                    top: 6.h,
+                    left: 20.w,
                     child: SizedBox(
-                      height: 200,
-                      width: 200,
+                      height: 32.h,
+                      width: 60.w,
                       child: Image.asset(
                         "assets/burger1.png",
                         width: 100,
@@ -102,33 +105,29 @@ class BurgerPage extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    top: 320,
-                    left: 40,
+                    top: 33.h,
+                    left: 8.w,
                     child: InkWell(
                       onTap: () {},
                       child: _cardButton(sizeName: 'S'),
                     ),
                   ),
                   Positioned(
-                    top: 320,
-                    right: 40,
-                    child: InkWell(
-                      onTap: () {},
-                      child: _cardButton(sizeName: 'L'),
-                    ),
+                    top: 41.h,
+                    left: 43.w,
+                    child: _cardButton(sizeName: 'M'),
                   ),
                   Positioned(
-                    top: 380,
-                    left: 180,
-                    child: InkWell(
-                      onTap: () {},
-                      child: _cardButton(sizeName: 'M'),
-                    ),
+                    right: 8.w,
+                    top: 33.h,
+                    child: _cardButton(sizeName: 'L'),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 70),
+            SizedBox(
+              height: 3.h,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -137,23 +136,28 @@ class BurgerPage extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.red,
                       shape: const CircleBorder(),
-                      padding: const EdgeInsets.all(1)),
+                      padding: EdgeInsets.all(1.w)),
                   child: const Icon(
                     Icons.add,
                     color: Colors.black,
                   ),
                 ),
-                const SizedBox(width: 10),
-                const Text(
+                SizedBox(
+                  width: 1.w,
+                ),
+                Text(
                   "1234",
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 18.sp),
+                ),
+                SizedBox(
+                  width: 1.w,
                 ),
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.red,
                       shape: const CircleBorder(),
-                      padding: const EdgeInsets.all(1)),
+                      padding: EdgeInsets.all(1.w)),
                   child: const Icon(
                     Icons.remove,
                     color: Colors.black,
@@ -161,64 +165,70 @@ class BurgerPage extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 70,
-            ),
             SizedBox(
-              height: 50,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: const [
-                      Text(
-                        "Price",
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      Text(
-                        'Rs. 140',
-                        style: TextStyle(
-                          fontSize: 18,
-                        ),
-                        textAlign: TextAlign.start,
-                      ),
-                    ],
-                  ),
-                  TextButton(
-                      onPressed: () {},
-                      style: TextButton.styleFrom(
-                        backgroundColor: const Color(0xffD40909),
-                        minimumSize: const Size(110, 50),
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            bottomLeft: Radius.circular(10),
-                          ),
-                        ),
-                      ),
-                      child: Row(
-                        children: const [
-                          Icon(
-                            Icons.shopping_bag_outlined,
-                            color: Colors.white,
-                            size: 30,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            'Go to Cart',
+              height: 5.h,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 2.w),
+              child: SizedBox(
+                height: 7.h,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(right: 8.w),
+                          child: Text(
+                            "Price",
                             style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.white,
+                              fontSize: 12.sp,
+                              color: Colors.grey,
+                            ),
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
+                        Text(
+                          'Rs. 140',
+                          style: TextStyle(
+                            fontSize: 18.sp,
+                          ),
+                        ),
+                      ],
+                    ),
+                    TextButton(
+                        onPressed: () {},
+                        style: TextButton.styleFrom(
+                          backgroundColor: const Color(0xffD40909),
+                          minimumSize: Size(10.w, 7.h),
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(10),
+                              bottomLeft: Radius.circular(10),
                             ),
                           ),
-                        ],
-                      )),
-                ],
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.shopping_bag_outlined,
+                              color: Colors.white,
+                              size: 8.w,
+                            ),
+                            SizedBox(
+                              width: 2.w,
+                            ),
+                            Text(
+                              'Go to Cart',
+                              style: TextStyle(
+                                fontSize: 12.sp,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        )),
+                  ],
+                ),
               ),
             )
           ],
