@@ -7,7 +7,7 @@ import 'package:sizer/sizer.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(Home());
+  runApp(const Home());
 }
 
 class Home extends StatelessWidget {
@@ -16,7 +16,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
-      return GetMaterialApp(
+      return const GetMaterialApp(
         debugShowCheckedModeBanner: false,
         home: HomePage(),
       );
