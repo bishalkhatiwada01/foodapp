@@ -4,6 +4,7 @@ import 'package:foodapp/ui/home_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:sizer/sizer.dart';
+import 'package:go_router/go_router.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,9 +17,11 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
-      return const GetMaterialApp(
+      return GetMaterialApp.router(
+        // routeInformationParser: ,
+        // routerDelegate: ,
         debugShowCheckedModeBanner: false,
-        home: HomePage(),
+        // home: HomePage(),
       );
     });
   }
